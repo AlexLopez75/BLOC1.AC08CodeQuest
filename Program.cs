@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 
 public class Program
 {
@@ -14,10 +13,13 @@ public class Program
         const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
         const string MsgInputName = "Enter your wizard's name: ";
         const string MsgNameConfirm = "Your wizard's name is: ";
+        const string PressEnter = "Press enter to continue";
 
-        int op = 0, level;
+        int op = 0, level, day, hour, power, totalHour = 0, totalPower = 0;
         string wizardName;
         bool validInput;
+
+        Random rnd = new Random();
 
         do
         {
@@ -33,13 +35,6 @@ public class Program
             try
             {
                 op = Convert.ToInt32(Console.ReadLine());
-                if (op==1)
-                {
-                    Console.Write(MsgInputName);
-                    wizardName = Console.ReadLine();
-                    level = 1;
-                    Console.WriteLine(MsgNameConfirm + wizardName);
-                }
             }
             catch (FormatException)
             {
@@ -55,6 +50,25 @@ public class Program
             if (validInput)
             {
                 Console.WriteLine(op);
+                if (op == 1)
+                {
+                    Console.Write(MsgInputName);
+                    wizardName = Console.ReadLine();
+                    level = 1;
+                    Console.WriteLine(MsgNameConfirm + wizardName);
+
+                    for (day = 1; day < 6; day++)
+                    {
+                        hour = rnd.Next(11);
+                        power = rnd.Next(11);
+                        totalHour = totalHour + hour;
+                        totalPower = totalPower + power;
+                        Console.WriteLine("Day " +day+ ": " +wizardName+ " meditated for " +hour+ " hours and gained " +power+ " power points.");
+                        Console.WriteLine(wizardName+ " has meditated for a total of " +totalHour+ " hours and gained " +totalPower+ " power points");
+                        Console.WriteLine(PressEnter);
+                        Console.ReadLine();
+                    }
+                }
             }
 
 
