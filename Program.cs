@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Linq.Expressions;
 
-class Program
+public class Program
 {
     static void Main()
     {
@@ -11,8 +12,11 @@ class Program
         const string MenuOptionExit = "0. Exit game";
         const string MenuPrompt = "Choose an option (1-3) - (0) to exit: ";
         const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
+        const string MsgInputName = "Enter your wizard's name: ";
+        const string MsgNameConfirm = "Your wizard's name is: ";
 
-        int op = 0;
+        int op = 0, level;
+        string wizardName;
         bool validInput;
 
         do
@@ -29,7 +33,13 @@ class Program
             try
             {
                 op = Convert.ToInt32(Console.ReadLine());
-
+                if (op==1)
+                {
+                    Console.Write(MsgInputName);
+                    wizardName = Console.ReadLine();
+                    level = 1;
+                    Console.WriteLine(MsgNameConfirm + wizardName);
+                }
             }
             catch (FormatException)
             {
@@ -42,7 +52,7 @@ class Program
                 validInput = false;
             }
 
-            if(validInput)
+            if (validInput)
             {
                 Console.WriteLine(op);
             }
@@ -50,4 +60,5 @@ class Program
 
         } while (op != 0);
     }
+
 }
