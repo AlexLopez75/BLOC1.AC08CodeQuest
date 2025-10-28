@@ -15,8 +15,7 @@ public class Program
         const string MsgInputName = "Enter your wizard's name: ";
         const string MsgNameConfirm = "Your wizard's name is: ";
 
-        int op = 0;
-        int level = 0;
+        int op = 0, level;
         string wizardName;
         bool validInput;
 
