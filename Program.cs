@@ -2,7 +2,7 @@
 
 public class Program
 {
-    static void Main()
+    public static void Main()
     {
         const string MenuTitle = "===== MAIN MENU - CODEQUEST =====";
         const string MenuOption1 = "1. Train your wizard";
