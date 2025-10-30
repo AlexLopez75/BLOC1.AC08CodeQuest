@@ -24,8 +24,8 @@ public class Program
         const string TitleMaster = "Level: ITB-Wizard the Grey";
 
         int op = 0, day, hour, power, totalHour = 0, totalPower = 0;
-        string wizardName, level;
         bool validInput;
+        string wizardName, level;
 
         Random rnd = new Random();
 
