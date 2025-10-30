@@ -14,9 +14,17 @@ public class Program
         const string MsgInputName = "Enter your wizard's name: ";
         const string MsgNameConfirm = "Your wizard's name is: ";
         const string PressEnter = "Press enter to continue";
+        const string LevelNoob = "You still confuse your wand with a spoon";
+        const string LevelNovice = "You are a Magic Breeze Caster";
+        const string LevelAdvanced = "Wow! You can cast dragons witout burning the lab!";
+        const string LevelMaster = "You have achieved th Master of Arcanes rank!";
+        const string TitleNoob = "Level: Zyn the bugged";
+        const string TitleNovice = "Level: Arka Nullpointer";
+        const string TitleAdvanced = "Level: Elarion of the Embers";
+        const string TitleMaster = "Level: ITB-Wizard the Grey";
 
-        int op = 0, level, day, hour, power, totalHour = 0, totalPower = 0;
-        string wizardName;
+        int op = 0, day, hour, power, totalHour = 0, totalPower = 0;
+        string wizardName, level;
         bool validInput;
 
         Random rnd = new Random();
@@ -54,7 +62,7 @@ public class Program
                 {
                     Console.Write(MsgInputName);
                     wizardName = Console.ReadLine();
-                    level = 1;
+                    level = "1";
                     Console.WriteLine(MsgNameConfirm + wizardName);
 
                     for (day = 1; day < 6; day++)
@@ -63,10 +71,33 @@ public class Program
                         power = rnd.Next(11);
                         totalHour = totalHour + hour;
                         totalPower = totalPower + power;
-                        Console.WriteLine("Day " +day+ ": " +wizardName+ " meditated for " +hour+ " hours and gained " +power+ " power points.");
-                        Console.WriteLine(wizardName+ " has meditated for a total of " +totalHour+ " hours and gained " +totalPower+ " power points");
+                        Console.WriteLine("Day " + day + ": " + wizardName + " meditated for " + hour + " hours and gained " + power + " power points.");
+                        Console.WriteLine(wizardName + " has meditated for a total of " + totalHour + " hours and gained " + totalPower + " power points");
                         Console.WriteLine(PressEnter);
                         Console.ReadLine();
+                    }
+                    switch (totalPower)
+                    {
+                        case > 46:
+                            Console.WriteLine(LevelMaster);
+                            Console.WriteLine(TitleMaster);
+                            level = "ITB-Wizard the Grey";
+                            break;
+                        case > 40:
+                            Console.WriteLine(LevelAdvanced);
+                            Console.WriteLine(TitleAdvanced);
+                            level = "Elarion of the Embers";
+                            break;
+                        case > 30:
+                            Console.WriteLine(LevelNovice);
+                            Console.WriteLine(TitleNovice);
+                            level = "Arka Nullpointer";
+                            break;
+                        case > 20:
+                            Console.WriteLine(LevelNoob);
+                            Console.WriteLine(TitleNoob);
+                            level = "Zyn the bugged";
+                            break;
                     }
                 }
             }
