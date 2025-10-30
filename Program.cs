@@ -22,6 +22,8 @@ public class Program
         const string TitleNovice = "Level: Arka Nullpointer";
         const string TitleAdvanced = "Level: Elarion of the Embers";
         const string TitleMaster = "Level: ITB-Wizard the Grey";
+        const string DayTraining = "Day {0} : {1} meditated for {2} hours and gained {3} power points.";
+        const string TotalTraining = "{0} has meditated for a total of {1} hours and gained {2} power points";
 
         int op = 0, day, hour, power, totalHour = 0, totalPower = 0;
         bool validInput;
@@ -71,8 +73,8 @@ public class Program
                         power = rnd.Next(11);
                         totalHour = totalHour + hour;
                         totalPower = totalPower + power;
-                        Console.WriteLine("Day " + day + ": " + wizardName + " meditated for " + hour + " hours and gained " + power + " power points.");
-                        Console.WriteLine(wizardName + " has meditated for a total of " + totalHour + " hours and gained " + totalPower + " power points");
+                        Console.WriteLine(DayTraining, day, wizardName, hour, power);
+                        Console.WriteLine(TotalTraining, wizardName, totalHour, totalPower);
                         Console.WriteLine(PressEnter);
                         Console.ReadLine();
                     }
