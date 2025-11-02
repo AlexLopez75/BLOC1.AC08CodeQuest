@@ -11,21 +11,14 @@ public class Program
         const string MenuOptionExit = "0. Exit game";
         const string MenuPrompt = "Choose an option (1-3) - (0) to exit: ";
         const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
-        const string MsgInputName = "Enter your wizard's name: ";
-        const string MsgNameConfirm = "Your wizard's name is: ";
-        const string PressEnter = "Press enter to continue";
-        const string LevelNoob = "You still confuse your wand with a spoon";
-        const string LevelNovice = "You are a Magic Breeze Caster";
-        const string LevelAdvanced = "Wow! You can cast dragons witout burning the lab!";
-        const string LevelMaster = "You have achieved th Master of Arcanes rank!";
-        const string TitleNoob = "Level: Zyn the bugged";
-        const string TitleNovice = "Level: Arka Nullpointer";
-        const string TitleAdvanced = "Level: Elarion of the Embers";
-        const string TitleMaster = "Level: ITB-Wizard the Grey";
+        const string MsgDoor = "You stand before door {0}, enter the correct number between 1 and 5 to progress. You have {1} attempts remaining";
+        const string DoorCorrect = "The drangon respects you. You have unlocked the next level";
+        const string DoorIncorrect = "The dragon is suspicious, you may try again";
+        const string DungeonFail = "The dragon has detected your presence and had you expelled form the server!";
+        const string DungeonComplete = "You have unlocked the final level. Get ready for battle";
 
-        int op = 0, day, hour, power, totalHour = 0, totalPower = 0;
-        bool validInput;
-        string wizardName, level;
+        int op = 0, door = 1, attempts = 3, number, code;
+        bool validInput, dungeonComplete;
 
         Random rnd = new Random();
 
@@ -58,51 +51,40 @@ public class Program
             if (validInput)
             {
                 Console.WriteLine(op);
-                if (op == 1)
+                if (op == 2)
                 {
-                    Console.Write(MsgInputName);
-                    wizardName = Console.ReadLine();
-                    level = "1";
-                    Console.WriteLine(MsgNameConfirm + wizardName);
+                    dungeonComplete = false;
+                    do
+                    {
+                        for (door = 1; door <= 3; door++)
+                        {
+                            code = rnd.Next(1, 6);
+                            attempts = 3;
 
-                    for (day = 1; day < 6; day++)
-                    {
-                        hour = rnd.Next(11);
-                        power = rnd.Next(11);
-                        totalHour = totalHour + hour;
-                        totalPower = totalPower + power;
-                        Console.WriteLine("Day " + day + ": " + wizardName + " meditated for " + hour + " hours and gained " + power + " power points.");
-                        Console.WriteLine(wizardName + " has meditated for a total of " + totalHour + " hours and gained " + totalPower + " power points");
-                        Console.WriteLine(PressEnter);
-                        Console.ReadLine();
-                    }
-                    switch (totalPower)
-                    {
-                        case > 46:
-                            Console.WriteLine(LevelMaster);
-                            Console.WriteLine(TitleMaster);
-                            level = "ITB-Wizard the Grey";
-                            break;
-                        case > 40:
-                            Console.WriteLine(LevelAdvanced);
-                            Console.WriteLine(TitleAdvanced);
-                            level = "Elarion of the Embers";
-                            break;
-                        case > 30:
-                            Console.WriteLine(LevelNovice);
-                            Console.WriteLine(TitleNovice);
-                            level = "Arka Nullpointer";
-                            break;
-                        case > 20:
-                            Console.WriteLine(LevelNoob);
-                            Console.WriteLine(TitleNoob);
-                            level = "Zyn the bugged";
-                            break;
-                    }
+                            while (attempts > 0 && attempts <= 3)
+                            {
+                                Console.WriteLine(MsgDoor, door, attempts);
+                                number = Int32.Parse(Console.ReadLine());
+
+                                if (number == code)
+                                {
+                                    Console.WriteLine(DoorCorrect);
+                                    attempts = 5;
+                                }
+                                else
+                                {
+                                    Console.WriteLine(DoorIncorrect);
+                                    attempts--;
+                                }
+                            }
+                            if (door == 3 && attempts > 0)
+                            {
+                                dungeonComplete = true;
+                            }
+                        }
+                    } while (attempts <= 3 && attempts >= 1);
                 }
             }
-
-
         } while (op != 0);
     }
 
