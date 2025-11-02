@@ -12,10 +12,12 @@ public class Program
         const string MenuPrompt = "Choose an option (1-3) - (0) to exit: ";
         const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
         const string MsgDoor = "You stand before door {0}, enter the correct number between 1 and 5 to progress. You have {1} attempts remaining";
-        const string DoorCorrect = "The drangon respects you. You have unlocked the next level";
-        const string DoorIncorrect = "The dragon is suspicious, you may try again";
+        const string DoorCorrect = "The drangon respects you. You have unlocked the next level.";
+        const string DoorCorrectFinal = "The last door has been succesfully open!";
+        const string DoorIncorrect = "The dragon is suspicious, you may try again.";
+        const string DoorIncorrectLast = "You have failed too many times.";
         const string DungeonFail = "The dragon has detected your presence and had you expelled form the server!";
-        const string DungeonComplete = "You have unlocked the final level. Get ready for battle";
+        const string DungeonComplete = "You have unlocked the final level. Get ready for battle!";
 
         int op = 0, door = 1, attempts = 3, number, code;
         bool validInput, dungeonComplete;
@@ -68,21 +70,53 @@ public class Program
 
                                 if (number == code)
                                 {
-                                    Console.WriteLine(DoorCorrect);
-                                    attempts = 5;
+                                    switch (door)
+                                    {
+                                        case 3:
+                                            Console.WriteLine(DoorCorrectFinal);
+                                            attempts = 5;
+                                            break;
+                                        case < 3:
+                                            Console.WriteLine(DoorCorrect);
+                                            attempts = 5;
+                                            break;
+                                    }
                                 }
                                 else
                                 {
-                                    Console.WriteLine(DoorIncorrect);
-                                    attempts--;
+                                    switch (attempts)
+                                    {
+                                        case <= 1:
+                                            Console.WriteLine(DoorIncorrectLast);
+                                            attempts--;
+                                            break;
+                                        case > 1:
+                                            Console.WriteLine(DoorIncorrect);
+                                            attempts--;
+                                            break;
+                                    }
                                 }
                             }
-                            if (door == 3 && attempts > 0)
+                            if (attempts <= 0)
                             {
-                                dungeonComplete = true;
+                                door = 3;
                             }
                         }
+                        if (door == 3 && attempts > 0)
+                        {
+                            dungeonComplete = true;
+                        }
                     } while (attempts <= 3 && attempts >= 1);
+
+                    switch (dungeonComplete)
+                    {
+                        case true:
+                            Console.WriteLine(DungeonComplete);
+                            break;
+                        case false:
+                            Console.WriteLine(DungeonFail);
+                            break;
+                    }
                 }
             }
         } while (op != 0);
