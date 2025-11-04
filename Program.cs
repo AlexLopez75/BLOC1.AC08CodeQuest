@@ -3,6 +3,7 @@ public class Program
 {
     public static void Main()
     {
+        //Menu:
         const string MenuTitle = "===== MAIN MENU - CODEQUEST =====";
         const string MenuOption1 = "1. Train your wizard";
         const string MenuOption2 = "2. Check the dungeon";
@@ -225,4 +226,5 @@ public class Program
             }
         } while (op != 0);
     }
+
 }
