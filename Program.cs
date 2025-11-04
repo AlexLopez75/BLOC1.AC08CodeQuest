@@ -45,8 +45,6 @@ public class Program
         int door = 1, attempts = 3, number, code;
         bool dungeonComplete;
 
-        //Chapter 3:
-
         Random rnd = new Random();
 
         do
