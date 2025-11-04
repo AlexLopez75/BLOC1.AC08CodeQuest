@@ -11,6 +11,8 @@ public class Program
         const string MenuOptionExit = "0. Exit game";
         const string MenuPrompt = "Choose an option (1-3) - (0) to exit: ";
         const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
+        
+        //Chapter 1:
         const string MsgInputName = "Enter your wizard's name: ";
         const string MsgNameConfirm = "Your wizard's name is: ";
         const string PressEnter = "Press enter to continue";
@@ -60,9 +62,51 @@ public class Program
             if (validInput)
             {
                 Console.WriteLine(op);
+                switch (op)
+                {
+                    case 1:
+                        Console.Write(MsgInputName);
+                        wizardName = Console.ReadLine();
+                        level = "1";
+                        Console.WriteLine(MsgNameConfirm + wizardName);
+
+                        for (day = 1; day < 6; day++)
+                        {
+                            hour = rnd.Next(11);
+                            power = rnd.Next(11);
+                            totalHour = totalHour + hour;
+                            totalPower = totalPower + power;
+                            Console.WriteLine(DayTraining, day, wizardName, hour, power);
+                            Console.WriteLine(TotalTraining, wizardName, totalHour, totalPower);
+                            Console.WriteLine(PressEnter);
+                            Console.ReadLine();
+                        }
+                        switch (totalPower)
+                        {
+                            case > 46:
+                                Console.WriteLine(LevelMaster);
+                                Console.WriteLine(TitleMaster);
+                                level = "ITB-Wizard the Grey";
+                                break;
+                            case > 40:
+                                Console.WriteLine(LevelAdvanced);
+                                Console.WriteLine(TitleAdvanced);
+                                level = "Elarion of the Embers";
+                                break;
+                            case > 30:
+                                Console.WriteLine(LevelNovice);
+                                Console.WriteLine(TitleNovice);
+                                level = "Arka Nullpointer";
+                                break;
+                            case > 20:
+                                Console.WriteLine(LevelNoob);
+                                Console.WriteLine(TitleNoob);
+                                level = "Zyn the bugged";
+                                break;
+                        }
+                        break;
+                }
             }
-
-
         } while (op != 0);
     }
 
