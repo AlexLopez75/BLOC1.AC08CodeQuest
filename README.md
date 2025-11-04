@@ -1,21 +1,18 @@
-# Chapter 1: Joc de Proves
+# Chapter 2. Entering the dragon RAMón the Powerful's dungeon
 
-Normal: level = "ITB-Wizard the Grey"
+In this first chapter, the following functions are requested to be programmed:
 
-| Instrucció | Iteració | day | hour | power | totalHour | totalPower | Output |
-|------------|----------|-----|------|-------|-----------|------------|--------|
-| 1 | - | 1 | rnd | 0 | 0 | 0 | - |
-| 2 | 1 | 1 | 2 | 0 | 0 | 0 | hour = 2 |
-| 2 | 2 | 1 | 2 | 10 | 0 | 0 | power = 10 |
-| 2 | 3 | 1 | 2 | 10 | 2 | 0 | totalHour = 2 |
-| 2 | 4 | 1 | 2 | 10 | 2 | 10 | totalPower = 10 |
-| 2 | 5 | 1 | 2 | 10 | 2 | 10 | WRITE = Day 1 : wizardName meditated for 2 hours and gained 10 power points " |
-| 2 | 6 | 1 | 2 | 10 | 2 | 10 | WRITE = "wizardName has meditated for a total of 2 hours and gained 10 power points" |
-| 2 | 7 | 1 | 2 | 10 | 2 | 10 | WRITE = "Press enter to continue" |
-| 3 | 1 | 1 | 4 | 0 | 2 | 0 | hour = 4 |
-| 3 | 2 | 2 | 4 | 10 | 2 | 0 | power = 10 |
-| 3 | 3 | 2 | 4 | 10 | 6 | 0 | totalHour = 6 |
-| 3 | 4 | 2 | 4 | 10 | 6 | 20 | totalPower = 20 |
-| 3 | 5 | 2 | 4 | 10 | 6 | 20 | WRITE = Day 2 : wizardName meditated for 4 hours and gained 10 power points " |
-| 3 | 6 | 2 | 4 | 10 | 6 | 20 | WRITE = "wizardName has meditated for a total of 6 hours and gained 20 power points" |
-| 3 | 7 | 2 | 4 | 10 | 6 | 20 | WRITE = "Press enter to continue" |
+1. There are 3 doors. Each has a random code between (1 – 5).
+2. You have 3 attempts per door.
+3. If you fail a door, the game ends with the message:
+
+*The dragon has detected your presence and has expelled you from the server!*
+
+If you are correct, the message appears:
+
+*The dragon respects you. You have unlocked the next level!*
+
+If you reach the third door and open it successfully, the message appears:
+
+*You have unlocked the final level. Prepare for battle!*
+
