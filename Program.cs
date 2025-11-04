@@ -36,6 +36,12 @@ public class Program
         const string DungeonFail = "The dragon has detected your presence and had you expelled form the server!";
         const string DungeonComplete = "You have unlocked the final level. Get ready for battle!";
 
+        //Chapter 3:
+        const string ExcavationStart = "Excavation {0}, you enter the cave and dig in:";
+        const string TreasureFail = "Today it's not your lucky day, you have found 0 bits.";
+        const string TreasureFound = "You have found {0} bits today.";
+        const string TotalTreasure = "You have gathered a total of {0} bits.";
+
         //Chapter 1:
         int op = 0, day, hour, power, totalHour = 0, totalPower = 0;
         bool validInput;
@@ -44,6 +50,9 @@ public class Program
         //Chapter 2:
         int door = 1, attempts = 3, number, code;
         bool dungeonComplete;
+
+        //Chapter 3:
+        int excavation = 1, treasure, bits, totalBits = 0;
 
         Random rnd = new Random();
 
@@ -120,72 +129,98 @@ public class Program
                         }
                         break;
                     case 2:
-                            dungeonComplete = false;
-                            do
+                        dungeonComplete = false;
+                        do
+                        {
+                            for (door = 1; door <= 3; door++)
                             {
-                                for (door = 1; door <= 3; door++)
+                                code = rnd.Next(1, 6);
+                                attempts = 3;
+
+                                while (attempts > 0 && attempts <= 3)
                                 {
-                                    code = rnd.Next(1, 6);
-                                    attempts = 3;
+                                    Console.WriteLine(MsgDoor, door, attempts);
 
-                                    while (attempts > 0 && attempts <= 3)
+                                    try
                                     {
-                                        Console.WriteLine(MsgDoor, door, attempts);
-
-                                        try
+                                        number = Int32.Parse(Console.ReadLine());
+                                        if (number == code)
                                         {
-                                            number = Int32.Parse(Console.ReadLine());
-                                            if (number == code)
+                                            switch (door)
                                             {
-                                                switch (door)
-                                                {
-                                                    case 3:
-                                                        Console.WriteLine(DoorCorrectFinal);
-                                                        attempts = 5;
-                                                        break;
-                                                    case < 3:
-                                                        Console.WriteLine(DoorCorrect);
-                                                        attempts = 5;
-                                                        break;
-                                                }
-                                            }
-                                            else
-                                            {
-                                                switch (attempts)
-                                                {
-                                                    case <= 1:
-                                                        Console.WriteLine(DoorIncorrectLast);
-                                                        attempts--;
-                                                        break;
-                                                    case > 1:
-                                                        Console.WriteLine(DoorIncorrect);
-                                                        attempts--;
-                                                        break;
-                                                }
+                                                case 3:
+                                                    Console.WriteLine(DoorCorrectFinal);
+                                                    attempts = 5;
+                                                    break;
+                                                case < 3:
+                                                    Console.WriteLine(DoorCorrect);
+                                                    attempts = 5;
+                                                    break;
                                             }
                                         }
-                                        catch (FormatException)
+                                        else
                                         {
-                                            Console.WriteLine(InputErrorDungeon);
-                                        }
-                                        catch
-                                        {
-                                            Console.WriteLine(InputErrorDungeon);
+                                            switch (attempts)
+                                            {
+                                                case <= 1:
+                                                    Console.WriteLine(DoorIncorrectLast);
+                                                    attempts--;
+                                                    break;
+                                                case > 1:
+                                                    Console.WriteLine(DoorIncorrect);
+                                                    attempts--;
+                                                    break;
+                                            }
                                         }
                                     }
-                                    if (attempts <= 0)
+                                    catch (FormatException)
                                     {
-                                        door = 3;
+                                        Console.WriteLine(InputErrorDungeon);
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine(InputErrorDungeon);
                                     }
                                 }
-                                if (door >= 3 && attempts > 0)
+                                if (attempts <= 0)
                                 {
-                                    dungeonComplete = true;
+                                    door = 3;
                                 }
-                            } while (attempts <= 3 && attempts >= 1);
+                            }
+                            if (door >= 3 && attempts > 0)
+                            {
+                                dungeonComplete = true;
+                            }
+                        } while (attempts <= 3 && attempts >= 1);
 
-                            Console.WriteLine(dungeonComplete ? DungeonComplete : DungeonFail);
-                            break;
+                        Console.WriteLine(dungeonComplete ? DungeonComplete : DungeonFail);
+                        break;
+                    case 3:
+                        for (excavation = 1; excavation <= 5; excavation++)
+                        {
+                            treasure = rnd.Next(0, 11);
+                            bits = rnd.Next(5, 51);
+                            totalBits = totalBits + bits;
+
+                            Console.WriteLine(ExcavationStart, excavation);
+
+                            switch (treasure)
+                            {
+                                case <= 0:
+                                    Console.WriteLine(TreasureFail);
+                                    Console.WriteLine(PressEnter);
+                                    Console.ReadLine();
+                                    break;
+                                case >= 1:
+                                    Console.WriteLine(TreasureFound, bits);
+                                    Console.WriteLine(PressEnter);
+                                    Console.ReadLine();
+                                    break;
+                            }
+
+                            Console.WriteLine(TotalTreasure, totalBits);
+                        }
+                        break;
                 }
             }
         } while (op != 0);
