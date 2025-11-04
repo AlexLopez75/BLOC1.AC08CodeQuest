@@ -1,5 +1,4 @@
 ﻿using System;
-
 public class Program
 {
     public static void Main()
@@ -27,9 +26,26 @@ public class Program
         const string DayTraining = "Day {0} : {1} meditated for {2} hours and gained {3} power points.";
         const string TotalTraining = "{0} has meditated for a total of {1} hours and gained {2} power points";
 
+        //Chapter 2:
+        const string MsgDoor = "You stand before door {0}, enter the correct number between 1 and 5 to progress. You have {1} attempts remaining";
+        const string InputErrorDungeon = "Input a nuber between 1 and 5.";
+        const string DoorCorrect = "The drangon respects you. You have unlocked the next level.";
+        const string DoorCorrectFinal = "The last door has been succesfully open!";
+        const string DoorIncorrect = "The dragon is suspicious, you may try again.";
+        const string DoorIncorrectLast = "You have failed too many times.";
+        const string DungeonFail = "The dragon has detected your presence and had you expelled form the server!";
+        const string DungeonComplete = "You have unlocked the final level. Get ready for battle!";
+
+        //Chapter 1:
         int op = 0, day, hour, power, totalHour = 0, totalPower = 0;
         bool validInput;
         string wizardName, level;
+
+        //Chapter 2:
+        int door = 1, attempts = 3, number, code;
+        bool dungeonComplete;
+
+        //Chapter 3:
 
         Random rnd = new Random();
 
@@ -105,6 +121,73 @@ public class Program
                                 break;
                         }
                         break;
+                    case 2:
+                            dungeonComplete = false;
+                            do
+                            {
+                                for (door = 1; door <= 3; door++)
+                                {
+                                    code = rnd.Next(1, 6);
+                                    attempts = 3;
+
+                                    while (attempts > 0 && attempts <= 3)
+                                    {
+                                        Console.WriteLine(MsgDoor, door, attempts);
+
+                                        try
+                                        {
+                                            number = Int32.Parse(Console.ReadLine());
+                                            if (number == code)
+                                            {
+                                                switch (door)
+                                                {
+                                                    case 3:
+                                                        Console.WriteLine(DoorCorrectFinal);
+                                                        attempts = 5;
+                                                        break;
+                                                    case < 3:
+                                                        Console.WriteLine(DoorCorrect);
+                                                        attempts = 5;
+                                                        break;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                switch (attempts)
+                                                {
+                                                    case <= 1:
+                                                        Console.WriteLine(DoorIncorrectLast);
+                                                        attempts--;
+                                                        break;
+                                                    case > 1:
+                                                        Console.WriteLine(DoorIncorrect);
+                                                        attempts--;
+                                                        break;
+                                                }
+                                            }
+                                        }
+                                        catch (FormatException)
+                                        {
+                                            Console.WriteLine(InputErrorDungeon);
+                                        }
+                                        catch
+                                        {
+                                            Console.WriteLine(InputErrorDungeon);
+                                        }
+                                    }
+                                    if (attempts <= 0)
+                                    {
+                                        door = 3;
+                                    }
+                                }
+                                if (door >= 3 && attempts > 0)
+                                {
+                                    dungeonComplete = true;
+                                }
+                            } while (attempts <= 3 && attempts >= 1);
+
+                            Console.WriteLine(dungeonComplete ? DungeonComplete : DungeonFail);
+                            break;
                 }
             }
         } while (op != 0);
