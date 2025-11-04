@@ -11,6 +11,8 @@ public class Program
         const string MenuOptionExit = "0. Exit game";
         const string MenuPrompt = "Choose an option (1-3) - (0) to exit: ";
         const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
+        
+        //Chapter 1:
         const string MsgInputName = "Enter your wizard's name: ";
         const string MsgNameConfirm = "Your wizard's name is: ";
         const string PressEnter = "Press enter to continue";
