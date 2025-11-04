@@ -42,6 +42,8 @@ public class Program
         const string TreasureFail = "Today it's not your lucky day, you have found 0 bits.";
         const string TreasureFound = "You have found {0} bits today.";
         const string TotalTreasure = "You have gathered a total of {0} bits.";
+        const string BigTreasure = "You have unlocked the golden GPU! Your sepells now go at 120 FPS!";
+        const string NormalTreasure = "Your graphics card is still integrated. Time to beat another dragon!";
 
         //Chapter 1:
         int op = 0, day, hour, power, totalHour = 0, totalPower = 0;
@@ -178,7 +180,7 @@ public class Program
                                     {
                                         Console.WriteLine(InputErrorDungeon);
                                     }
-                                    catch
+                                    catch (Exception)
                                     {
                                         Console.WriteLine(InputErrorDungeon);
                                     }
@@ -209,18 +211,20 @@ public class Program
                             {
                                 case <= 0:
                                     Console.WriteLine(TreasureFail);
+                                    Console.WriteLine(TotalTreasure, totalBits);
                                     Console.WriteLine(PressEnter);
                                     Console.ReadLine();
                                     break;
                                 case >= 1:
                                     Console.WriteLine(TreasureFound, bits);
+                                    Console.WriteLine(TotalTreasure, totalBits);
                                     Console.WriteLine(PressEnter);
                                     Console.ReadLine();
                                     break;
                             }
-
-                            Console.WriteLine(TotalTreasure, totalBits);
                         }
+
+                        Console.WriteLine(totalBits >= 200 ? BigTreasure : NormalTreasure);
                         break;
                 }
             }
