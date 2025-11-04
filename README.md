@@ -1,17 +1,17 @@
-# Chapter 1: El camí del mag aprenent 🧙‍♀️
+# Chapter 1: The path of the apprentice wizard 🧙‍♀️
 
-En aquest primer capítol, es demana programar les seguents funcions:
+In this first chapter, the following functions are requested to be programmed:
 
-1. Demanar el nom del mag i defineix el seu nivell inicial a 1.
-2. Cada dia d’entrenament (5 dies), el mag ha de dedicar una quantitat d’hores (aleatori (màx 24 h)) de meditació i ha d'obtenir una quantitat aleatòria de poder entre 1 i 10 punts.
-3. Cada dia, mostrar un missatge de l'evolució del mag dia a dia (acumulativa).
-4.  Al final, mostrar el nivell final de poder. Segons el total:
+1. Ask for the magician's name and define his initial level to 1.
+2. Each day of training (5 days), the magician must dedicate a number of hours (random (max 24h)) of meditation and must obtain a random amount of power between 1 and 10 points.
+3. Each day, display a message of the magician's evolution day by day (cumulative).
+4. At the end, display the final level of power. According to the total:
 
-- Menys de 20
-- Igual o més de 20
-- Igual o més de 30
-- Igual o més de 35
-- Igual o més de 40
+- Less than 20
+- Equal or more than 20
+- Equal or more than 30
+- Equal or more than 35
+- Equal or more than 40
 
 
 Normal: totalPower = 50
