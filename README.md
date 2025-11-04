@@ -1,4 +1,4 @@
-Chapter 3: Looting the treasure 💰
+# Chapter 3: Looting the treasure 💰
 
 1. Every time you mine, you get a random amount between 5 and 50 bits, or maybe nothing You can only do 5 digs.
 2. Show the result of each dig.
