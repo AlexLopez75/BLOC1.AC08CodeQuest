@@ -20,7 +20,7 @@ public class Program
         const string LevelNoob = "You still confuse your wand with a spoon";
         const string LevelNovice = "You are a Magic Breeze Caster";
         const string LevelAdvanced = "Wow! You can cast dragons witout burning the lab!";
-        const string LevelMaster = "You have achieved th Master of Arcanes rank!";
+        const string LevelMaster = "You have achieved the Master of Arcanes rank!";
         const string TitleDisaster = "Raoden the Elantrin";
         const string TitleNoob = "Level: Zyn the bugged";
         const string TitleNovice = "Level: Arka Nullpointer";
