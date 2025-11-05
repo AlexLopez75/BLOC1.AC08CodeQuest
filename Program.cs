@@ -210,7 +210,6 @@ public class Program
                         {
                             treasure = rnd.Next(0, 11);
                             bits = rnd.Next(5, 51);
-                            totalBits = totalBits + bits;
 
                             Console.WriteLine(ExcavationStart, excavation);
 
@@ -224,6 +223,7 @@ public class Program
                                     break;
                                 case >= 1:
                                     Console.WriteLine(TreasureFound, bits);
+                                    totalBits = totalBits + bits;
                                     Console.WriteLine(TotalTreasure, totalBits);
                                     Console.WriteLine(PressEnter);
                                     Console.ReadLine();
@@ -237,5 +237,4 @@ public class Program
             }
         } while (op != 0);
     }
-
 }
